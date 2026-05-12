@@ -61,7 +61,7 @@ roas = st.sidebar.number_input(
 
 if st.button("Predict Revenue"):
 
-    url = "http://backend:8000/predict"
+    url = "https://market-mix-intelligence-platform.onrender.com/predict"
     params = {
 
         "spend": spend,
