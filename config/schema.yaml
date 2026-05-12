@@ -1,0 +1,17 @@
+columns:
+
+  channel: object
+
+  spend: int64
+
+  revenue: float64
+
+  impressions: int64
+
+  clicks: int64
+
+  conversions: int64
+
+  ctr: float64
+
+  roas: float64

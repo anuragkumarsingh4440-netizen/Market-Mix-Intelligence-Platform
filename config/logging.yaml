@@ -1,0 +1,22 @@
+version: 1
+
+formatters:
+  simple:
+    format: "[%(asctime)s] %(levelname)s - %(name)s - %(message)s"
+
+handlers:
+
+  console:
+    class: logging.StreamHandler
+    formatter: simple
+    level: INFO
+
+  file:
+    class: logging.FileHandler
+    formatter: simple
+    filename: logs/application/app.log
+    level: INFO
+
+root:
+  level: INFO
+  handlers: [console, file]

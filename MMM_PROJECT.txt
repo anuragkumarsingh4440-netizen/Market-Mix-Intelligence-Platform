@@ -1,0 +1,99 @@
+| Line         | Purpose                        |
+| ------------ | ------------------------------ |
+| venv/        | ignore virtual environment     |
+| **pycache**/ | ignore Python cache            |
+| *.pyc        | ignore compiled Python files   |
+| mlruns/      | ignore MLflow experiment cache |
+| logs/        | ignore logs                    |
+| .git/        | ignore Git history             |
+
+
+| Part               | Meaning        |
+| ------------------ | -------------- |
+| docker build       | create image   |
+| -t                 | tag/name       |
+| marketmix-platform | image name     |
+| .                  | current folder |
+ 
+1) docker build -t marketmix-platform .
+Read Dockerfile
+      ↓
+Copy project files
+      ↓
+Install requirements
+      ↓
+Create image
+
+You’ll see:
+
+dependency installation
+copying files
+build steps
+image creation
+
+Finally:
+
+Successfully tagged marketmix-platform
+
+2)docker run -p 8000:8000 marketmix-platform
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "src.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+Then open:
+
+http://127.0.0.1:8000/docs
+
+If Swagger opens:
+
+your ML backend is now containerized
+
+
+
+
+Docker Compose
+      ↓
+Starts Backend Container
+      ↓
+Starts Frontend Container
+      ↓
+Creates Internal Network
+      ↓
+Frontend ↔ Backend Communication
+
+
+
+Docker
+docker compose up --build
+Build backend container
+      ↓
+Build frontend container
+      ↓
+Create shared network
+      ↓
+Start backend service
+      ↓
+Start frontend service
+
+
+http://127.0.0.1:8000/docs # Swagger Backened
+
+http://127.0.0.1:8501 # Swagger Frontend
+
+
+After this:
+our project officially becomes:
+
+full-stack containerized AI platform
+
