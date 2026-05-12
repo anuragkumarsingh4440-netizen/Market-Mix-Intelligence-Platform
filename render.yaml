@@ -1,0 +1,11 @@
+services:
+
+  - type: web
+
+    name: marketmix-backend
+
+    env: docker
+
+    plan: free
+
+    autoDeploy: true
